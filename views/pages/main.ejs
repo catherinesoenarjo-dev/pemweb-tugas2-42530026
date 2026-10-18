@@ -1,0 +1,37 @@
+<%- include('../partials/header', { pageTitle: pageTitle, halaman: halaman }) %>
+
+<section class="hero">
+  <h1>Your calming getaway.</h1>
+  <p>Fine selection of drinks and sweets to relax your day.<br>Only natural ingredients.</p>
+</section>
+
+<section class="katalog">
+  <div class="katalog-atas">
+    <h2>Choose your pick.</h2>
+    <nav class="filter">
+      <a href="/" class="pill <%= kategoriAktif === '' ? 'aktif' : '' %>">All</a>
+      <% kategoriList.forEach(k => { %>
+        <a href="/?kategori=<%= k %>" class="pill <%= kategoriAktif === k ? 'aktif' : '' %>"><%= k %></a>
+      <% }) %>
+    </nav>
+  </div>
+
+  <% if (menu.length === 0) { %>
+    <p class="kosong">Menu untuk kategori ini tidak tersedia.</p>
+  <% } %>
+
+  <div class="grid">
+    <% menu.forEach(m => { %>
+      <a href="/menu/<%= m.id %>" class="card">
+        <img src="<%= m.foto %>" alt="<%= m.nama %>">
+        <div class="card-body">
+          <h3><%= m.nama %></h3>
+          <p><%= m.label %></p>
+          <span class="harga">Rp <%= m.harga.toLocaleString('id-ID') %></span>
+        </div>
+      </a>
+    <% }) %>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>

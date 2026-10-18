@@ -1,0 +1,30 @@
+<%- include('../partials/header', { pageTitle: pageTitle, halaman: halaman }) %>
+
+<section class="detail">
+  <div class="detail-info">
+    <h1><%= menu.nama %></h1>
+    <p><%= menu.deskripsi %></p>
+
+    <div class="qty">
+      <button type="button" id="kurang">-</button>
+      <span id="jumlah">0</span>
+      <button type="button" id="tambah">+</button>
+    </div>
+
+    <div class="detail-bawah">
+      <button type="button" class="btn-cart">ADD TO CART</button>
+      <span class="detail-harga">Rp. <%= menu.harga.toLocaleString('id-ID') %></span>
+    </div>
+  </div>
+
+  <img src="<%= menu.foto %>" alt="<%= menu.nama %>" class="detail-foto">
+</section>
+
+<script>
+  let jumlah = 0;
+  const tampil = document.getElementById('jumlah');
+  document.getElementById('tambah').onclick = () => { jumlah++; tampil.textContent = jumlah; };
+  document.getElementById('kurang').onclick = () => { if (jumlah > 0) jumlah--; tampil.textContent = jumlah; };
+</script>
+
+<%- include('../partials/footer') %>

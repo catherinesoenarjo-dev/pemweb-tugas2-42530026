@@ -1,0 +1,279 @@
+/* ===== Reset & Box Model (dari Modul Praktikum 1) ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  min-height: 100vh;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+}
+
+main { 
+    padding: 2rem; }
+
+main:has(.hero) {
+  padding: 0;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+ul, ol { list-style: none; }
+input, button, textarea, select { font: inherit; }
+a { text-decoration: none; color: inherit; }
+
+/* ===== Warna & font ===== */
+:root {
+  --olive: #7a7538;
+  --krem: #fff3e8;
+  --font-judul: 'Instrument Serif', Georgia, serif;
+  --font-isi: 'Inter', system-ui, sans-serif;
+}
+
+body {
+  font-family: var(--font-isi);
+  background: var(--olive);
+  color: var(--krem);
+}
+
+/* ===== Navbar & Footer ===== */
+.navbar {
+  background: var(--olive);
+  padding: 1.5rem;
+  text-align: center;
+}
+
+body.page-detail .navbar { text-align: left; padding-inline: 5%; }
+body.page-detail {
+  background: var(--krem);
+}
+
+body.page-detail main {
+  padding: 0;
+}
+.logo {
+  font-family: var(--font-judul);
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.footer {
+  background: var(--olive);
+  padding: 2rem 1rem;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+/* ===== Halaman Katalog ===== */
+.hero {
+  min-height: 550px;
+  padding: 3rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-image: url('/images/fotoatas.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero h1 {
+  font-family: var(--font-judul);
+  font-weight: 400;
+  font-size: clamp(3rem, 9vw, 6rem);
+  line-height: 1;
+  margin-bottom: 1.5rem;
+}
+
+.katalog {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding: 3rem 1.5rem;
+}
+
+.katalog-atas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.katalog-atas h2 {
+  font-family: var(--font-judul);
+  font-weight: 400;
+  font-size: 3rem;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--krem);
+}
+
+.filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.pill {
+  display: inline-block;
+  border: 1px solid var(--krem);
+  border-radius: 999px;
+  padding: 0.5rem 1.5rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.pill.aktif,
+.pill:hover {
+  background: var(--krem);
+  color: var(--olive);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background: var(--krem);
+  color: var(--olive);
+  border-radius: 28px;
+  overflow: hidden;
+  border: 3px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.card:hover,
+.card:focus-visible {
+  border-color: #d49a2f;
+}
+
+.card img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+}
+
+.card-body { padding: 1rem 1.25rem 1.25rem; }
+
+.card-body h3 {
+  font-family: var(--font-judul);
+  font-weight: 400;
+  font-size: 1.75rem;
+}
+
+.card-body p { font-size: 0.85rem; }
+
+.harga {
+  display: block;
+  text-align: right;
+}
+
+.kosong { margin-bottom: 1.5rem; }
+
+/* ===== Halaman Detail ===== */
+.detail {
+  background: var(--krem);
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 3rem 5%;
+}
+
+.detail-info {
+  background: var(--olive);
+  padding: 2.5rem;
+  border-radius: 30px 30px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.detail-info h1 {
+  font-family: var(--font-judul);
+  font-weight: 400;
+  font-size: 3.5rem;
+  line-height: 1.1;
+}
+
+.qty { display: flex; gap: 0.5rem; }
+
+.qty button,
+.qty span {
+  width: 3rem;
+  height: 2.5rem;
+  border-radius: 10px;
+  border: 1px solid var(--krem);
+  background: transparent;
+  color: var(--krem);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.qty span { background: var(--krem); color: var(--olive); cursor: default; }
+
+.detail-bawah {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.btn-cart {
+  border: 1px solid var(--krem);
+  background: transparent;
+  color: var(--krem);
+  border-radius: 999px;
+  padding: 0.6rem 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-cart:hover { background: var(--krem); color: var(--olive); }
+
+.detail-harga {
+  font-family: var(--font-judul);
+  font-size: 2.25rem;
+}
+
+.detail-foto {
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  object-fit: cover;
+}
+
+/* ===== 404 ===== */
+.notfound {
+  text-align: center;
+  padding: 5rem 1.5rem;
+}
+
+.notfound h1 {
+  font-family: var(--font-judul);
+  font-weight: 400;
+  font-size: 5rem;
+}
+
+.notfound p { margin-bottom: 1.5rem; }
+
+/* ===== Layar lebar (mobile-first) ===== */
+@media (min-width: 768px) {
+  .detail { grid-template-columns: 1fr 1.3fr; }
+  .detail-info { border-radius: 40px 0 0 40px; }
+}
